@@ -15,11 +15,12 @@
  */
 package org.thymeleaf.tools.memoryexecutor;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.messageresolver.StandardMessageResolver;
-import org.thymeleaf.templatemode.StandardTemplateModeHandlers;
+import org.thymeleaf.templatemode.TemplateMode;
 
 public class StaticTemplateExecutorTest {
 
@@ -36,7 +37,7 @@ public class StaticTemplateExecutorTest {
             + "    </body>"
             + "</html>";
         String expected =
-            "<!DOCTYPE html>\n"
+            "<!DOCTYPE html>"
             + "<html>"
             + "    <head>"
             + "        <title>Test</title>"
@@ -45,12 +46,12 @@ public class StaticTemplateExecutorTest {
             + "        <h1>Hello world!</h1>"
             + "    </body>"
             + "</html>";
-        String templateMode = StandardTemplateModeHandlers.HTML5.getTemplateModeName();
+        String templateMode = TemplateMode.HTML.name();
         Context context = new Context();
         context.setVariable("greeting", "Hello world!");
         StandardMessageResolver messageResolver = new StandardMessageResolver();
         StaticTemplateExecutor executor = new StaticTemplateExecutor(context, messageResolver, templateMode);
         String result = executor.processTemplateCode(simpleTemplate);
-        assertEquals(result, expected);
+        assertEquals(expected, result);
     }
 }

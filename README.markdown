@@ -9,8 +9,14 @@ Project info
 
 This is the source code for the Thymeleaf Interactive Tutorial.
 
-The Tutorial is a web application hosted at http://thymeleaf-itutorial.appspot.com/
-but you also can download the source code and run it in your local java web server.
+The Tutorial is a web application. You also can download the source code and run it in your local java web server.
+
+For your convenience you can also run it via the Tomcat Maven plugin:
+
+```bash
+mvn clean install
+mvn tomcat7:run-war
+```
 
 
 License

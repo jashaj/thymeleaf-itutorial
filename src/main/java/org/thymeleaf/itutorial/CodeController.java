@@ -21,9 +21,14 @@ package org.thymeleaf.itutorial;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -32,26 +37,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class CodeController {
+    private static final Logger LOG = LoggerFactory.getLogger(CodeController.class);
+    private final ServletContext servletContext;
 
-    @Autowired private ServletContext servletContext;
+    @Autowired
+    public CodeController(final ServletContext servletContext) {
+        this.servletContext = servletContext;
+    }
 
     @RequestMapping(value = "/resources/**", method = RequestMethod.GET)
     public void code(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         String servletPath = request.getServletPath();
+        LOG.debug("Getting resource {}", servletPath);
         InputStream resourceStream = servletContext.getResourceAsStream(resourcePath(servletPath));
         response.setContentType(mimeType(servletPath));
-        response.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding(StandardCharsets.UTF_8.displayName());
         FileCopyUtils.copy(resourceStream, response.getOutputStream());
     }
 
-    public String resourcePath(final String servletPath) {
+    private String resourcePath(final String servletPath) {
         int firstSlash = servletPath.indexOf('/');
         int secondSlash = servletPath.indexOf('/', firstSlash + 1);
         String path = servletPath.substring(secondSlash + 1);
         return "/WEB-INF/" + path;
     }
 
-    public String mimeType(final String servletPath) {
+    private String mimeType(final String servletPath) {
         if (servletPath.endsWith(".html")) {
             return "text/html";
         } else if (servletPath.endsWith(".java")) {
