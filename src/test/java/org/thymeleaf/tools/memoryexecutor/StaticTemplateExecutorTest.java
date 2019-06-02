@@ -18,6 +18,8 @@ package org.thymeleaf.tools.memoryexecutor;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.springframework.context.MessageSource;
+import org.springframework.context.support.StaticMessageSource;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.messageresolver.StandardMessageResolver;
 
@@ -48,7 +50,8 @@ public class StaticTemplateExecutorTest {
         Context context = new Context();
         context.setVariable("greeting", "Hello world!");
         StandardMessageResolver messageResolver = new StandardMessageResolver();
-        StaticTemplateExecutor executor = new StaticTemplateExecutor(context, messageResolver);
+        final MessageSource messageSource = new StaticMessageSource();
+        StaticTemplateExecutor executor = new StaticTemplateExecutor(context, messageResolver, messageSource);
         String result = executor.processTemplateCode(simpleTemplate);
         assertEquals(expected, result);
     }

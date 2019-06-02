@@ -19,6 +19,7 @@
  */
 package org.thymeleaf.tools.memoryexecutor;
 
+import org.springframework.context.MessageSource;
 import org.thymeleaf.context.IContext;
 import org.thymeleaf.messageresolver.IMessageResolver;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -32,14 +33,16 @@ import org.thymeleaf.util.Validate;
 public class StaticTemplateExecutor {
 
     private final IContext context;
-    
     private final IMessageResolver messageResolver;
-    
-    public StaticTemplateExecutor(final IContext context, final IMessageResolver messageResolver) {
+    private final MessageSource messageSource;
+
+    public StaticTemplateExecutor(final IContext context, final IMessageResolver messageResolver, final MessageSource messageSource) {
         Validate.notNull(context, "Context must be non-null");
         Validate.notNull(messageResolver, "MessageResolver must be non-null");
+        Validate.notNull(messageSource, "MessageSource must be non-null");
         this.context = context;
         this.messageResolver = messageResolver;
+        this.messageSource = messageSource;
     }
     
     public String processTemplateCode(final String code) {
@@ -48,6 +51,7 @@ public class StaticTemplateExecutor {
 
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setMessageResolver(messageResolver);
+        templateEngine.setMessageSource(messageSource);
         templateEngine.setTemplateResolver(templateResolver);
         return templateEngine.process(code, context);
     }    

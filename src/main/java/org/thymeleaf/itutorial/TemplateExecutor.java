@@ -59,7 +59,7 @@ public class TemplateExecutor {
         IWebContext webContext = new WebContext(request, response, servletContext, locale, variables);
         SpringMessageResolver messageResolver = new SpringMessageResolver();
         messageResolver.setMessageSource(messageSource);
-        executor = new StaticTemplateExecutor(webContext, messageResolver);
+        executor = new StaticTemplateExecutor(webContext, messageResolver, messageSource);
     }
 
     public String generateCode(final String code) {
