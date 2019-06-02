@@ -30,8 +30,13 @@ public class IndexController {
 
     public static final String THYMELEAF_VERSION_PARAMETER = "thymeleafVersion";
     
-    @Autowired private ServletContext servletContext;
-    
+    private final ServletContext servletContext;
+
+    @Autowired
+    public IndexController(final ServletContext servletContext) {
+        this.servletContext = servletContext;
+    }
+
     @RequestMapping("/")
     public String index(final Model model) {
         model.addAttribute("thymeleafVersion", servletContext.getInitParameter(THYMELEAF_VERSION_PARAMETER));

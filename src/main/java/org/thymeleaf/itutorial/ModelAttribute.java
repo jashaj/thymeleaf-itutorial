@@ -40,7 +40,7 @@ public enum ModelAttribute {
     private final String name;
     private final String file;
 
-    private ModelAttribute(String name, String file) {
+    ModelAttribute(String name, String file) {
         this.name = name;
         this.file = file;
     }

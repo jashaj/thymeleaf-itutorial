@@ -19,8 +19,13 @@
  */
 package org.thymeleaf.itutorial;
 
+import static org.thymeleaf.itutorial.IndexController.THYMELEAF_VERSION_PARAMETER;
+
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
 import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,19 +34,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.thymeleaf.itutorial.beans.Customer;
-import static org.thymeleaf.itutorial.IndexController.THYMELEAF_VERSION_PARAMETER;
 
 @Controller
 public class ExerciseController {
 
-    private static final String CHARSET = "UTF-8";
+    private final ServletContext servletContext;
 
-    @Autowired private ServletContext servletContext;
+    @Autowired
+    public ExerciseController(final ServletContext servletContext) {
+        this.servletContext = servletContext;
+    }
 
     @RequestMapping(value = "/exercise/{index}", method = RequestMethod.GET)
     public String exercise(@PathVariable("index") final Integer index, final Model model) throws IOException {
         Exercise exercise = Exercise.get(index);
-        String question = new ExerciseResourceLoader(servletContext, exercise).getResource("question.html", CHARSET);
+        String question = new ExerciseResourceLoader(servletContext, exercise).getResource("question.html", StandardCharsets.UTF_8.displayName());
         model.addAttribute("question", question);
         model.addAttribute("exercise", exercise);
         model.addAttribute("thymeleafVersion", servletContext.getInitParameter(THYMELEAF_VERSION_PARAMETER));

@@ -20,6 +20,7 @@
 package org.thymeleaf.itutorial;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
 import javax.servlet.ServletContext;
@@ -30,6 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,8 +57,8 @@ public class DynamicViewController {
             final HttpServletRequest request, final HttpServletResponse response,
             final Locale locale) throws IOException {
         String result = generateCodeOrError(request, response, servletContext, locale, code);
-        response.setContentType("text/html");
-        response.setCharacterEncoding("utf-8");
+        response.setContentType(MediaType.TEXT_HTML_VALUE);
+        response.setCharacterEncoding(StandardCharsets.UTF_8.displayName());
         response.getWriter().print(result);
     }
 

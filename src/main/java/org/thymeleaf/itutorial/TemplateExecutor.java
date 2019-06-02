@@ -28,11 +28,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.MessageSource;
+import org.thymeleaf.context.IWebContext;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.itutorial.beans.Gender;
 import org.thymeleaf.itutorial.beans.PaymentMethod;
 import org.thymeleaf.spring4.messageresolver.SpringMessageResolver;
-import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.tools.memoryexecutor.StaticTemplateExecutor;
 
 public class TemplateExecutor {
@@ -56,11 +56,10 @@ public class TemplateExecutor {
         variables.put("releaseDate", DAO.loadReleaseDate());
         variables.put("productId", 273);
         variables.put("productName", "Red-carpet");
-        WebContext webContext = new WebContext(request, response, servletContext, locale, variables);
-        String templateMode = TemplateMode.HTML.name();
+        IWebContext webContext = new WebContext(request, response, servletContext, locale, variables);
         SpringMessageResolver messageResolver = new SpringMessageResolver();
         messageResolver.setMessageSource(messageSource);
-        executor = new StaticTemplateExecutor(webContext, messageResolver, templateMode);
+        executor = new StaticTemplateExecutor(webContext, messageResolver);
     }
 
     public String generateCode(final String code) {

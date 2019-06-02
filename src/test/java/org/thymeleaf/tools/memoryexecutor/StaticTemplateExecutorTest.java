@@ -20,7 +20,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.messageresolver.StandardMessageResolver;
-import org.thymeleaf.templatemode.TemplateMode;
 
 public class StaticTemplateExecutorTest {
 
@@ -46,11 +45,10 @@ public class StaticTemplateExecutorTest {
             + "        <h1>Hello world!</h1>"
             + "    </body>"
             + "</html>";
-        String templateMode = TemplateMode.HTML.name();
         Context context = new Context();
         context.setVariable("greeting", "Hello world!");
         StandardMessageResolver messageResolver = new StandardMessageResolver();
-        StaticTemplateExecutor executor = new StaticTemplateExecutor(context, messageResolver, templateMode);
+        StaticTemplateExecutor executor = new StaticTemplateExecutor(context, messageResolver);
         String result = executor.processTemplateCode(simpleTemplate);
         assertEquals(expected, result);
     }

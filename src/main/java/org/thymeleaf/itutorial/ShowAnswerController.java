@@ -33,8 +33,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ShowAnswerController {
 
-    @Autowired private ServletContext servletContext;
-    
+    private final ServletContext servletContext;
+
+    @Autowired
+    public ShowAnswerController(final ServletContext servletContext) {
+        this.servletContext = servletContext;
+    }
+
     @RequestMapping(value = "/showSolution/{index}", method = RequestMethod.GET)
     public void showSolution(@PathVariable("index") final Integer index, final OutputStream response) throws IOException {
         Exercise exercise = Exercise.get(index);
