@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:lang-xmllang="en">
     <head>
         <title>Thymeleaf Interactive Tutorial</title>
         <link rel="stylesheet" href="../../css/main-static.css" th:href="@{/css/main.css}" />
@@ -22,12 +22,12 @@
                 </li>
                 <li>
                     Reading the
-                    <a href="http://www.thymeleaf.org/doc/articles/standarddialect5minutes.html">5-minute introduction to Thymeleaf</a>
+                    <a href="https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html">5-minute introduction to Thymeleaf</a>
                     before starting this interactive tutorial is recommended.
                 </li>
                 <li>
                     At the beginning of each exercise a link to the relevant chapter of the
-                    <a href="http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html"
+                    <a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html"
                        title="Open Thymeleaf manual">Using Thymeleaf</a> manual will be provided.
                     Usually that section of the manual will contain all the information you will need
                     to complete the exercise.
@@ -62,22 +62,19 @@
         <div id="rightcol">
             <h2>Table of contents</h2>
             <h3>Basic exercises</h3>
-            <ul>
+            <ol>
                 <li th:each="exercise : ${basicExercises}">
                     <a href="exercise.html"
                        th:href="@{/exercise/__${exercise.index}__}"
                        th:text="${exercise.description}">Exercise 1: bean values</a>
                     <b th:if="${exerciseStat.index == 0}">&larr; Start here!</b>
                 </li>
-            </ul>
-            <h3>New in Thymeleaf 2.1</h3>
-            <ul>
                 <li th:each="exercise : ${twoDotOneExercises}">
                     <a href="exercise.html"
                        th:href="@{/exercise/__${exercise.index}__}"
                        th:text="${exercise.description}">Exercise 1: bean values</a>
                 </li>
-            </ul>
+            </ol>
         </div>
         <footer>
             <h3 class="footer">Copyright &copy; 2015 The Thymeleaf Team</h3>

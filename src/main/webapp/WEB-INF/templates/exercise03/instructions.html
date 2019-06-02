@@ -8,22 +8,22 @@
     <body>
         <p>
             This exercise introduces concepts from
-            <a href="http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#appending-texts"
-               title="Open Thymeleaf manual" target="_blank">chapter 4 - section 6 of the Using Thymeleaf</a>
+            <a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#appending-texts"
+               target="_blank">chapter 4 - section 7 of the Using Thymeleaf</a>
             manual.
         </p>
         <ol>
             <li>
                 Edit the source code in order to show product price concatenated &ndash;prefixed&ndash; with a dollar symbol. 
 				As with previous exercises, a bean of class 
-                <a href="../../Product.java"
-                   th:href="'javascript:CODE_DIALOG.show(\'code/Product.java\')'"
-                   title="See Product.java source code">Product</a>
+                <button class="code-dialog-button" type="button"
+                   onclick="CODE_DIALOG.show('code/Product.java')"
+                   >Product</button>
 				has been already set into the context model with variable name <b>product</b>.
             </li>
             <li>
                 You can check the proposed solution by pressing the <b>Show solution</b> button
-                (<img src="../../../images/lightbulb.png" th:src="@{/images/lightbulb.png}" />) above the code editor.
+                (<img src="../../../images/lightbulb.png" th:src="@{/images/lightbulb.png}" alt=""/>) above the code editor.
             </li>
         </ol>
     </body>

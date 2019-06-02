@@ -8,26 +8,26 @@
     <body>
         <p>
             This exercise introduces concepts from
-            <a href="http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#appendix-b-expression-utility-objects"
-               title="Open Thymeleaf manual" target="_blank">chapter 16 of the Using Thymeleaf</a>
+            <a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#appendix-b-expression-utility-objects"
+               target="_blank">Appendix B of the Using Thymeleaf</a>
             manual.
         </p>
         <ol>
             <li>
                 Edit the source code in order to show bean values as you did in exercise 1. <br />
                 A bean of class 
-                <a href="../../Product.java"
-                   th:href="'javascript:CODE_DIALOG.show(\'code/Product.java\')'"
-                   title="See Product.java source code">Product</a>
+                <button class="code-dialog-button" type="button"
+                   onclick="CODE_DIALOG.show('code/Product.java')"
+                   >Product</button>
                 has been already set into the context model with variable name <b>product</b>.
             </li>
             <li>
                 Now let's add some formatting to those <i>Integer</i> and <i>Date</i> properties. For this, 
-				have a look at the definition of the <kbd>#dates</kbd>
-                and <kbd>#numbers</kbd> utility objects at the <i>Expression Utility Objects</i> Appendix 
+				have a look at the definition of the <code>#dates</code>
+                and <code>#numbers</code> utility objects at the <i>Expression Utility Objects</i> Appendix
 				of the
-                <a href="http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#appendix-expression-utility-objects"
-                   title="Open Thymeleaf manual">Using Thymeleaf</a>
+                <a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#appendix-expression-utility-objects"
+                   target="_blank">Using Thymeleaf</a>
                 tutorial.
             </li>
             <li>
@@ -36,7 +36,7 @@
             </li>
             <li>
                 You can check the proposed solution by pressing the <b>Show solution</b> button
-                (<img src="../../../images/lightbulb.png" th:src="@{/images/lightbulb.png}" />) above the code editor.
+                (<img src="../../../images/lightbulb.png" th:src="@{/images/lightbulb.png}" alt=""/>) above the code editor.
             </li>
         </ol>
     </body>

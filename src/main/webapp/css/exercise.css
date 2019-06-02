@@ -30,7 +30,9 @@ footer { clear: both; background-color: #cce699; text-align: right; font-size: 0
 #previous-button, #index-button, #next-button, #about-button, #show-instructions, #show-solution, #apply-solution { 
     display: inline-block; padding: 1px; margin-bottom: -6px; width: 18px; text-indent: -1000px; overflow: hidden; 
     background-color: #d6ebad; border-radius: 4px;
-    background-repeat: no-repeat; background-position: center center; 
+    background-repeat: no-repeat; background-position: center center;
+    font-family: 'Trebuchet Ms', Verdana, Arial, sans-serif;
+    font-size: 1em; line-height: 1.216667em; border-width: 0; box-sizing: content-box;
 }
 #previous-button:hover, #index-button:hover, #next-button:hover, #about-button:hover, #show-instructions:hover, 
 #show-solution:hover, #apply-solution:hover { 
@@ -44,10 +46,21 @@ footer { clear: both; background-color: #cce699; text-align: right; font-size: 0
 #show-solution { background-image: url('../images/lightbulb.png'); }
 #apply-solution { background-image: url('../images/lightning.png'); }
 
-span.modelAttribute span, span.modelAttribute a { font-size: 1em; font-weight: bold; text-decoration: none; color: brown; }
-span.modelAttribute a:hover { color: white; background-color: burlywood; }
+span.modelAttribute span, span.modelAttribute button { font-size: 1em; font-weight: bold; text-decoration: none; color: brown; background-color: transparent; border: none }
+span.modelAttribute button:hover,span.modelAttribute button:focus { color: white; background-color: burlywood; }
 
 /* Dialogs */
 #instructions, #about { font-size: 0.8em; }
 #instructions h1, #about h1 { font-size: 1.2em; }
 .dialog .ui-widget-header { background-color: #cce699; background-image: none; }
+
+.code-dialog-button {
+    text-decoration: underline;
+    background-color: transparent; border: none;
+    padding: 0;
+}
+
+.code-dialog-button:hover, .code-dialog-button:focus{
+    color: white;
+    background-color: brown;
+}

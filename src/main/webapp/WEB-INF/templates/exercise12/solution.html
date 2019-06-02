@@ -17,7 +17,7 @@
             <label for="lastName">Last name:</label>
             <input type="text" th:field="*{lastName}" value="Wayne" />
             
-            Genre:
+            Gender:
             <div th:each="gender : ${genders}" class="radio">
                 <input type="radio" th:value="${gender}" th:field="*{gender}" />
                 <label th:for="${#ids.prev('gender')}" th:text="${gender.description}">Male</label>

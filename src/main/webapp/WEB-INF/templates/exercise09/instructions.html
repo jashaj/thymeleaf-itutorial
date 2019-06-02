@@ -8,30 +8,30 @@
     <body>
         <p>
             This exercise introduces concepts from
-            <a href="http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#conditional-evaluation"
-               title="Open Thymeleaf manual" target="_blank">chapter 7 of the Using Thymeleaf</a>
+            <a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#conditional-evaluation"
+               target="_blank">chapter 7 of the Using Thymeleaf</a>
             manual.
         </p>
         <ol>
             <li>
-                A <kbd>List</kbd> of 
-                <a href="../../Customer.java"
-                   th:href="'javascript:CODE_DIALOG.show(\'code/Customer.java\')'"
-                   title="See Customer.java source code">Customer</a>
+                A <code>List</code> of
+                <button class="code-dialog-button" type="button"
+                   onclick="CODE_DIALOG.show('code/Customer.java')"
+                   title="See Customer.java source code">Customer</button>
                 objects has been set into the context model with variable name <b>customerList</b>.
                 This is a complex bean, containing properties of the
-                <a href="../../Gender.java"
-                   th:href="'javascript:CODE_DIALOG.show(\'code/Gender.java\')'"
-                   title="See Gender.java source code">Gender</a>
-                <a href="../../PaymentMethod.java"
-                   th:href="'javascript:CODE_DIALOG.show(\'code/PaymentMethod.java\')'"
-                   title="See PaymentMethod.java source code">PaymentMethod</a>
+                <button class="code-dialog-button" type="button"
+                   onclick="CODE_DIALOG.show('code/Gender.java')"
+                   title="See Gender.java source code">Gender</button> and
+                <button class="code-dialog-button" type="button"
+                   onclick="CODE_DIALOG.show('code/PaymentMethod.java')"
+                   title="See PaymentMethod.java source code">PaymentMethod</button>
                 enum types.
             </li>
             <li>
                 Edit the source code in order to practice three different kinds of condition expressions. Use
                 the comment hints at the HTML to guide you.<br />
-                <i>Tip: use <kbd>name()</kbd> in order to obtain the <kbd>String</kbd> representation of an enum value.</i>
+                <i>Tip: use <code>name()</code> in order to obtain the <code>String</code> representation of an enum value.</i>
                 <ul>
                   <li>In the <b>gender</b> column you must show a boy image, a girl image or an 'Unknown' text depending
                       on customer gender.</li>
@@ -46,7 +46,7 @@
             </li>
             <li>
                 You can check the proposed solution by pressing the <b>Show solution</b> button
-                (<img src="../../../images/lightbulb.png" th:src="@{/images/lightbulb.png}" />) above the code editor.
+                (<img src="../../../images/lightbulb.png" th:src="@{/images/lightbulb.png}" alt=""/>) above the code editor.
             </li>
         </ol>
     </body>

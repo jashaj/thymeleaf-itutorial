@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:lang-xmllang="en">
     <head>
         <title>Thymeleaf Interactive Tutorial</title>
         <meta charset="utf-8" />
@@ -48,15 +48,15 @@
             <span th:text="${exercise.description}">Exercise 1: bean values</span>
             <nav>
                 <a th:if="${exercise.previous}"
-                   id="previous-button" title="Previous exercise"
-                   href="exercise.html" th:href="@{/exercise/__${exercise.previous.index}__}">Previous</a>
-                <a id="index-button" title="Back to index" 
-                   href="index.html" th:href="@{/}">Index</a>
+                   id="previous-button"
+                   href="exercise.html" th:href="@{/exercise/__${exercise.previous.index}__}">Previous exercise</a>
+                <a id="index-button"
+                   href="index.html" th:href="@{/}">Back to index</a>
                 <a th:if="${exercise.next}"
-                   id="next-button" title="Next exercise"
-                   href="exercise.html" th:href="@{/exercise/__${exercise.next.index}__}">Next</a>
-                <a id="about-button" title="About the Thymeleaf Tutorial"
-                   href="javascript:ABOUT.toggle()">About</a>
+                   id="next-button"
+                   href="exercise.html" th:href="@{/exercise/__${exercise.next.index}__}">Next exercise</a>
+                <button id="about-button" title="About the Thymeleaf Tutorial" type="button"
+                   onclick="ABOUT.toggle()">About the Thymeleaf Tutorial</button>
             </nav>
         </header>
         <div id="instructions"
@@ -71,21 +71,18 @@
         </div>
         <div id="leftcol">
             <h2>Source code</h2>
-            <nav>
-                <a id="show-instructions" href="javascript:INSTRUCTIONS.toggle()" title="Instructions">Instructions</a>
-                <a id="show-solution"
-                   th:href="'javascript:CODE_DIALOG.show(\'templates/__${exercise.path}__/solution.html\')'"
-                   title="Show solution">Show solution</a>
-                <a id="apply-solution" href="javascript:SOLUTION.apply()" title="Apply solution">Apply solution</a>
-                <span th:if="${exercise.hasAttributes()}">Use:</span>
-                <span th:each="attribute : ${exercise.attributes}" class="modelAttribute" >
-                   <a th:if="${attribute.file}"
-                      th:href="'javascript:CODE_DIALOG.show(\'__${attribute.file}__\')'"
-                      th:text="${attribute.name}">productList</a>
-                   <span th:unless="${attribute.file}"
-                      th:text="${attribute.name}">productList</span>
-                </span>
-            </nav>
+            <button id="show-instructions" type="button" onclick="INSTRUCTIONS.toggle()">Instructions</button>
+            <button id="show-solution" type="button"
+               th:onclick="'CODE_DIALOG.show(\'templates/__${exercise.path}__/solution.html\')'">Show solution</button>
+            <button id="apply-solution" type="button" onclick="SOLUTION.apply()">Apply solution</button>
+            <span th:if="${exercise.hasAttributes()}">Use:</span>
+            <span th:each="attribute : ${exercise.attributes}" class="modelAttribute">
+               <button th:if="${attribute.file}" type="button"
+                  th:onclick="'CODE_DIALOG.show(\'__${attribute.file}__\')'"
+                  th:text="${attribute.name}">productList</button>
+               <span th:unless="${attribute.file}"
+                  th:text="${attribute.name}">productList</span>
+            </span>
             <div id="editor"></div>
             <h2>Static view</h2>
             <iframe id="static-view" name="static-view"></iframe>
@@ -93,7 +90,7 @@
         <div id="rightcol">
             <h2>Generated source</h2>
             <nav th:if="${exercise.i18nExercise}">
-                <span>Language:</span>
+                <label for="locale">Language:</label>
                 <select id="locale" onchange="VIEW_UPDATER.updateAll()">
                     <option value="en">English</option>
                     <option value="es">Spanish</option>

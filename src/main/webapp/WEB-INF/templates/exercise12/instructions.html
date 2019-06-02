@@ -8,29 +8,29 @@
     <body>
         <p>
             This exercise introduces concepts from
-            <a href="http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#expressions-on-selections-asterisk-syntax"
+            <a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#expressions-on-selections-asterisk-syntax"
                title="Open Thymeleaf manual" target="_blank">chapter 4 - section 3 of the Using Thymeleaf</a>
             manual.
         </p>
         <ol>
             <li>
                 A bean of class 
-                <a href="../../Customer.java"
-                   th:href="'javascript:CODE_DIALOG.show(\'code/Customer.java\')'"
-                   title="See Customer.java source code">Customer</a>
+                <button class="code-dialog-button" type="button"
+                   onclick="CODE_DIALOG.show('code/Customer.java')"
+                   >Customer</button>
                 has been set into the context model with variable name <b>customer</b>.
                 This is a complex bean, containing properties of the
-                <a href="../../Gender.java"
-                   th:href="'javascript:CODE_DIALOG.show(\'code/Gender.java\')'"
-                   title="See Gender.java source code">Gender</a>
-                <a href="../../PaymentMethod.java"
-                   th:href="'javascript:CODE_DIALOG.show(\'code/PaymentMethod.java\')'"
-                   title="See PaymentMethod.java source code">PaymentMethod</a>
+                <button class="code-dialog-button" type="button"
+                   onclick="CODE_DIALOG.show('code/Gender.java')"
+                   >Gender</button> and
+                <button class="code-dialog-button" type="button"
+                   onclick="CODE_DIALOG.show('code/PaymentMethod.java')"
+                   >PaymentMethod</button>
                 enum types.
             </li>
             <li>
                 Edit the source code  in order to bind bean fields into form fields.
-                You have to use <kbd>th:object</kbd> and <kbd>th:field</kbd> attributes. <br />
+                You have to use <code>th:object</code> and <code>th:field</code> attributes. <br />
                 As this exercise is more complex than previous ones, some hints have been written 
                 as HTML comments inside the template.
             </li>
@@ -43,7 +43,7 @@
             </li>
             <li>
                 You can check the proposed solution by pressing the <b>Show solution</b> button
-                (<img src="../../../images/lightbulb.png" th:src="@{/images/lightbulb.png}" />) above the code editor.
+                (<img src="../../../images/lightbulb.png" th:src="@{/images/lightbulb.png}" alt=""/>) above the code editor.
             </li>
         </ol>
     </body>
