@@ -11,11 +11,11 @@ This is the source code for the Thymeleaf Interactive Tutorial.
 
 The Tutorial is a web application. You also can download the source code and run it in your local java web server.
 
-For your convenience you can also run it via the Tomcat Maven plugin:
+For your convenience you can also run it via the bundled jetty runner:
 
 ```bash
 mvn clean install
-mvn tomcat7:run-war
+java -jar target/dependency/jetty-runner.jar --port 8080 target/*.war
 ```
 
 
