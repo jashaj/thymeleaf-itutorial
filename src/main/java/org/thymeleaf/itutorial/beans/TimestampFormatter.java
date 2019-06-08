@@ -16,26 +16,27 @@
 
 package org.thymeleaf.itutorial.beans;
 
+import org.springframework.format.Formatter;
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import org.springframework.format.Formatter;
 
 public class TimestampFormatter implements Formatter<Timestamp> {
 
-    private final String pattern = "EEEE dd 'of' MMMM, yyyy, 'at' HH:mm";
+    private static final String PATTERN = "EEEE dd 'of' MMMM, yyyy, 'at' HH:mm";
 
     @Override
     public String print(final Timestamp time, final Locale locale) {
-        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        SimpleDateFormat sdf = new SimpleDateFormat(PATTERN);
         return sdf.format(time);
     }
 
     @Override
     public Timestamp parse(final String string, final Locale locale) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        SimpleDateFormat sdf = new SimpleDateFormat(PATTERN);
         Date date = sdf.parse(string);
         return new Timestamp(date.getTime());
     }
