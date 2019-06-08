@@ -22,9 +22,9 @@
                 <tr th:each="customer : ${customerList}">
                     <td th:text="${customer.firstName}">Peter</td>
                     <td th:text="${customer.lastName}">Jackson</td>
-                    <!-- 
+                    <!--
                        Use th:switch for selecting content based on ${customer.gender}.
-                       As genre can be null if unknown, better use ${customer.gender?.name()}
+                       As gender can be null if unknown, better use ${customer.gender?.name()}
                        for obtaining its name.
                     -->
                     <td>
