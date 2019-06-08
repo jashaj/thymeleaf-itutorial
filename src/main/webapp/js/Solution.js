@@ -11,6 +11,10 @@ function Solution(CONTEXT_PATH, EXERCISE, EDITOR, callback) {
             success : function(code) {
                 EDITOR.setCode(code);
                 callback();
+            },
+            error : function (jqXHR) {
+                EDITOR.setCode(jqXHR.responseText);
+                callback();
             }
         });
     }

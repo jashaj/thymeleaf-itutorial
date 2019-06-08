@@ -2,7 +2,7 @@
  * Manage refreshing of views.
  */
 function ViewUpdater(EDITOR, GENERATED_SOURCE, staticViewId, dynamicViewId, CONTEXT_PATH) {
-    
+
     this.updateAll = function () {
         var code = EDITOR.getCode();
         var locale = $('#locale').val();
@@ -23,8 +23,13 @@ function ViewUpdater(EDITOR, GENERATED_SOURCE, staticViewId, dynamicViewId, CONT
             type: 'POST',
             data: data,
             dataType: 'html',
-            success : setGeneratedSourceCode
+            success : setGeneratedSourceCode,
+            error: clearGeneratedSourceCode
         });
+    }
+
+    function clearGeneratedSourceCode() {
+        setGeneratedSourceCode('');
     }
 
     function setGeneratedSourceCode(code) {
@@ -34,7 +39,7 @@ function ViewUpdater(EDITOR, GENERATED_SOURCE, staticViewId, dynamicViewId, CONT
     function showDynamicView(code, locale) {
         postCodeToIframe(code, locale, CONTEXT_PATH + 'dynamicView', dynamicViewId);
     }
-    
+
     function postCodeToIframe(code, locale, url, iframeId) {
         var frameName = iframeId;
         var frameRef = '#' + iframeId;

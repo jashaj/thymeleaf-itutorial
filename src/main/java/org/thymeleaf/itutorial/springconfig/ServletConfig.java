@@ -1,7 +1,5 @@
 package org.thymeleaf.itutorial.springconfig;
 
-import java.nio.charset.StandardCharsets;
-
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -25,7 +23,10 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
-import org.thymeleaf.templateresolver.ITemplateResolver;
+import org.thymeleaf.tools.templateresolvers.DynamicTemplateResolver;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 
 @EnableWebMvc
 @Configuration
@@ -66,20 +67,30 @@ public class ServletConfig extends WebMvcConfigurerAdapter implements Applicatio
   }
 
   @Bean
-  public ITemplateResolver templateResolver() {
+  public TemplateEngine templateEngine() {
+    SpringTemplateEngine springTemplateEngine = new SpringTemplateEngine();
+    springTemplateEngine.addTemplateResolver(templateResolver());
+    springTemplateEngine.addTemplateResolver(dynamicTemplateResolver());
+    return springTemplateEngine;
+  }
+
+  @Bean
+  public SpringResourceTemplateResolver templateResolver() {
     SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+    templateResolver.setOrder(0);
     templateResolver.setCacheable(false);
     templateResolver.setApplicationContext(applicationContext);
     templateResolver.setPrefix("/WEB-INF/templates/");
+    templateResolver.setResolvablePatterns(Collections.singleton("*.html"));
     templateResolver.setTemplateMode(TemplateMode.HTML);
     return templateResolver;
   }
 
   @Bean
-  public TemplateEngine templateEngine(ITemplateResolver templateResolver) {
-    SpringTemplateEngine springTemplateEngine = new SpringTemplateEngine();
-    springTemplateEngine.setTemplateResolver(templateResolver);
-    return springTemplateEngine;
+  public DynamicTemplateResolver dynamicTemplateResolver() {
+    final DynamicTemplateResolver resolver = new DynamicTemplateResolver();
+    resolver.setOrder(1);
+    return resolver;
   }
 
   @Bean
