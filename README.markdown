@@ -1,8 +1,5 @@
-
 Thymeleaf Interactive Tutorial Web Application
 ==============================================
-
-------------------------------------------------------------------------------
 
 Project info
 ------------
@@ -13,7 +10,7 @@ The Tutorial is a web application. You also can download the source code and run
 
 For your convenience you can also run it via the bundled jetty runner:
 
-```bash
+```commandline
 mvn clean install
 java -jar target/dependency/jetty-runner.jar --port 8080 target/*.war
 ```
@@ -22,5 +19,4 @@ java -jar target/dependency/jetty-runner.jar --port 8080 target/*.war
 License
 -------
 
-This software is licensed under the [Apache License 2.0]
-(http://www.apache.org/licenses/LICENSE-2.0.html).
+This software is licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
